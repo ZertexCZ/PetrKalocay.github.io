@@ -10,7 +10,6 @@ const HeroSection = () => {
   const subHeadingRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
-  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Entrance animation
@@ -40,13 +39,7 @@ const HeroSection = () => {
       duration: 0.6,
       stagger: 0.1,
       ease: "power3.out",
-    }, "-=0.6")
-    .from(scrollIndicatorRef.current, {
-      y: -20,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out",
-    }, "-=0.2");
+    }, "-=0.6");
     
     return () => {
       tl.kill();
@@ -105,12 +98,7 @@ const HeroSection = () => {
         </div>
       </div>
       
-      <div ref={scrollIndicatorRef} className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="flex flex-col items-center">
-          <span className="text-sm uppercase tracking-widest mb-2">Scroll down</span>
-          <i className="ri-arrow-down-line text-lg"></i>
-        </div>
-      </div>
+
     </section>
   );
 };
