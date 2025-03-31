@@ -202,6 +202,41 @@
   }
 }
 
+/* Twinkling stars animation for footer */
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+/* Aurora waves animation for footer */
+@keyframes aurora-wave {
+  0% {
+    transform: translateY(50%) scaleX(1);
+  }
+  50% {
+    transform: translateY(30%) scaleX(1.2);
+  }
+  100% {
+    transform: translateY(50%) scaleX(1);
+  }
+}
+
+/* Dots floating animation for footer */
+@keyframes dots-float {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+
 /* Custom colors - synced with theme.json */
 :root {
   --background: 0 0% 7%;
