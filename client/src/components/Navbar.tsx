@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useSections } from '@/hooks/use-sections';
-import useMobile from '@/hooks/use-mobile';
+import useIsMobile from '@/hooks/use-mobile';
 import MobileMenu from './MobileMenu';
 
 const Navbar = () => {
   const { scrollToSection } = useSections();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +43,7 @@ const Navbar = () => {
             }}
           >
             <span className="inline-block transform transition-transform duration-500 group-hover:-translate-y-full">
-              P<span className="text-accent">.</span>K
+              P<span className="text-accent">.</span>K<span className="text-accent">.</span>
             </span>
             <span className="inline-block absolute top-0 left-0 transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
               Petr<span className="text-accent">.</span>Kaločay

@@ -24,7 +24,7 @@ const AboutSection = () => {
                 I'm Petr Kaločay, an 18-year-old IT student from the Czech Republic. Currently studying at the Secondary Industrial School in Ostrov nad Ohří, I'm deeply passionate about software development and artificial intelligence.
               </p>
               <p className="text-lg text-gray-300">
-                My journey in technology has been marked by achievements like creating a "Chatbot for Schools" that's now actively used by my institution, and earning multiple ECDL certifications in various computing disciplines.
+                My journey in technology has been marked by achievements like creating a "Chatbot for Schools" that's now actively used by my school, developing a mobile app, and earning multiple ECDL certifications in various computing disciplines.
               </p>
               <p className="text-lg text-gray-300">
                 I thrive on problem-solving and continuous learning, with plans to pursue higher education in software development or AI after graduation.

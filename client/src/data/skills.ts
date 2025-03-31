@@ -33,5 +33,6 @@ export const skills = [
 
 export const certifications = [
   'ECDL M2', 'ECDL M3', 'ECDL M4', 'ECDL M5', 
-  'ECDL M6', 'ECDL M7', 'ECDL M9', 'ECDL M12', 'ECDL M15'
+  'ECDL M6', 'ECDL M7', 'ECDL M9', 'ECDL M12', 'ECDL M15',
+  'More in future'
 ];

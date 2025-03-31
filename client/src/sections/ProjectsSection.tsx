@@ -33,16 +33,7 @@ const ProjectsSection = () => {
                         </span>
                       ))}
                     </div>
-                    {project.link && (
-                      <a 
-                        href={project.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-block text-accent hover:text-white border-b border-accent hover:border-white pb-1 transition-colors duration-300"
-                      >
-                        View Project <i className="ri-arrow-right-line ml-1"></i>
-                      </a>
-                    )}
+
                   </div>
                   <div className={`md:col-span-6 lg:col-span-5 order-1 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
                     {project.image ? (
