@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
+  }
+
+  /* Custom font classes */
+  .font-clash {
+    font-family: 'Clash Display', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Remove focus styles for mouse users */
+  .using-mouse :focus {
+    outline: none;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent/70;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply mb-16;
+  }
+
+  .section-heading h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-clash font-bold;
+  }
+
+  .section-heading div {
+    @apply w-16 h-1 bg-accent mt-4;
+  }
+
+  .timeline-item {
+    @apply md:grid md:grid-cols-8 gap-4 items-start;
+  }
+
+  .skill-card {
+    @apply p-6 rounded-lg border border-muted bg-background/50 hover:border-accent transition-all duration-300;
+  }
+
+  .project-card {
+    @apply mb-24;
+  }
+}
+
+/* Custom colors - synced with theme.json */
+:root {
+  --background: 0 0% 7%;
+  --foreground: 0 0% 96%;
+  
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 96%;
+  
+  --popover: 0 0% 12%;
+  --popover-foreground: 0 0% 96%;
+  
+  --primary: 204 100% 50%;
+  --primary-foreground: 0 0% 7%;
+  
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 0 0% 96%;
+  
+  --muted: 0 0% 20%;
+  --muted-foreground: 0 0% 60%;
+  
+  --accent: 204 100% 50%;
+  --accent-foreground: 0 0% 7%;
+  
+  --destructive: 0 100% 50%;
+  --destructive-foreground: 0 0% 96%;
+  
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 204 100% 50%;
+  
+  --radius: 0.5rem;
+}
