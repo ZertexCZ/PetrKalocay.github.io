@@ -5,69 +5,82 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 px-6 md:px-12 lg:px-16 bg-card relative overflow-hidden">
-      {/* Animated background elements */}
+    <footer className="pb-8 pt-16 px-6 md:px-12 lg:px-16 bg-background relative overflow-hidden border-t border-accent/10">
+      {/* Animated background pattern */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent"></div>
-        <div className="absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-radial from-accent/5 to-transparent"></div>
-        <div className="absolute top-0 right-0 w-full h-32 bg-gradient-radial from-accent/5 to-transparent"></div>
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: `radial-gradient(rgba(56, 189, 248, 0.3) 1px, transparent 1px)`,
+          backgroundSize: '30px 30px',
+          backgroundPosition: '0 0'
+        }}></div>
       </div>
+
+      {/* Center glowing line */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/40 via-accent/5 to-transparent"></div>
       
-      {/* Decorative elements */}
+      {/* Horizontal glowing line */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent"></div>
-      <div className="absolute -top-16 -right-16 w-32 h-32 rounded-full bg-accent/10 filter blur-xl"></div>
-      <div className="absolute -bottom-16 -left-16 w-32 h-32 rounded-full bg-primary/10 filter blur-xl"></div>
       
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div className="text-center md:text-left">
-              <button
-                onClick={() => scrollToSection('home')}
-                className="inline-block"
-              >
-                <h2 className="text-2xl font-clash font-bold">
-                  Petr <span className="text-accent">K<span className="text-accent/80">.</span></span>
-                </h2>
-              </button>
-              <p className="text-gray-400 mt-2">IT Student & Developer</p>
-            </div>
-            
-            <div className="text-center">
-              <h3 className="text-sm uppercase tracking-wider text-accent mb-4">Navigation</h3>
-              <div className="space-y-2">
-                <button onClick={() => scrollToSection('home')} className="block mx-auto md:mx-0 hover:text-accent transition-colors">Home</button>
-                <button onClick={() => scrollToSection('about')} className="block mx-auto md:mx-0 hover:text-accent transition-colors">About</button>
-                <button onClick={() => scrollToSection('skills')} className="block mx-auto md:mx-0 hover:text-accent transition-colors">Skills</button>
-                <button onClick={() => scrollToSection('projects')} className="block mx-auto md:mx-0 hover:text-accent transition-colors">Projects</button>
-              </div>
-            </div>
-            
-            <div className="text-center md:text-right">
-              <h3 className="text-sm uppercase tracking-wider text-accent mb-4">Contact</h3>
-              <div className="space-y-2">
-                <a href="mailto:petrkalocay@gmail.com" className="block hover:text-accent transition-colors">petrkalocay@gmail.com</a>
-                <a href="mailto:petrkalocay@outlook.cz" className="block hover:text-accent transition-colors">petrkalocay@outlook.cz</a>
-                <a href="https://instagram.com/p.kalocay" target="_blank" rel="noopener noreferrer" className="block hover:text-accent transition-colors">@p.kalocay</a>
-              </div>
+      {/* Main content centered and constrained width */}
+      <div className="max-w-4xl mx-auto relative z-10 px-4">
+        {/* Logo and social links in a single centered row */}
+        <div className="flex flex-col items-center mb-12">
+          <button
+            onClick={() => scrollToSection('home')}
+            className="inline-block"
+          >
+            <h2 className="text-3xl font-clash font-bold">
+              Petr <span className="text-accent">K<span className="text-accent/80">.</span></span>
+            </h2>
+          </button>
+          
+          <div className="flex space-x-6 mt-6">
+            <a 
+              href="https://instagram.com/p.kalocay" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-12 h-12 rounded-full bg-background border border-muted/30 hover:border-accent/50 hover:text-accent flex items-center justify-center transition-all duration-300 text-xl"
+            >
+              <i className="ri-instagram-line"></i>
+            </a>
+            <a 
+              href="mailto:petrkalocay@gmail.com" 
+              className="w-12 h-12 rounded-full bg-background border border-muted/30 hover:border-accent/50 hover:text-accent flex items-center justify-center transition-all duration-300 text-xl"
+            >
+              <i className="ri-mail-line"></i>
+            </a>
+          </div>
+        </div>
+        
+        {/* Two column layout for links */}
+        <div className="grid grid-cols-2 gap-10 mb-12">
+          {/* Left column for navigation */}
+          <div className="flex flex-col items-center">
+            <h3 className="text-sm uppercase tracking-wider text-accent font-semibold mb-6">Navigation</h3>
+            <div className="flex flex-col items-center space-y-4">
+              <button onClick={() => scrollToSection('home')} className="hover:text-accent transition-colors px-4 py-1 hover:bg-accent/5 rounded-full">Home</button>
+              <button onClick={() => scrollToSection('about')} className="hover:text-accent transition-colors px-4 py-1 hover:bg-accent/5 rounded-full">About</button>
+              <button onClick={() => scrollToSection('skills')} className="hover:text-accent transition-colors px-4 py-1 hover:bg-accent/5 rounded-full">Skills</button>
+              <button onClick={() => scrollToSection('projects')} className="hover:text-accent transition-colors px-4 py-1 hover:bg-accent/5 rounded-full">Projects</button>
             </div>
           </div>
           
-          <div className="border-t border-muted/50 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
-              &copy; {currentYear} Petr Kaločay. All rights reserved.
-            </p>
-            
-            <div className="flex space-x-4">
-              <a href="https://instagram.com/p.kalocay" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-background/50 hover:bg-accent/20 flex items-center justify-center transition-colors duration-300">
-                <i className="ri-instagram-line"></i>
-              </a>
-              <a href="mailto:petrkalocay@gmail.com" className="w-10 h-10 rounded-full bg-background/50 hover:bg-accent/20 flex items-center justify-center transition-colors duration-300">
-                <i className="ri-mail-line"></i>
-              </a>
+          {/* Right column for contact */}
+          <div className="flex flex-col items-center">
+            <h3 className="text-sm uppercase tracking-wider text-accent font-semibold mb-6">Contact</h3>
+            <div className="flex flex-col items-center space-y-4">
+              <a href="mailto:petrkalocay@gmail.com" className="hover:text-accent transition-colors px-4 py-1 hover:bg-accent/5 rounded-full">petrkalocay@gmail.com</a>
+              <a href="mailto:petrkalocay@outlook.cz" className="hover:text-accent transition-colors px-4 py-1 hover:bg-accent/5 rounded-full">petrkalocay@outlook.cz</a>
+              <a href="https://instagram.com/p.kalocay" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors px-4 py-1 hover:bg-accent/5 rounded-full">@p.kalocay</a>
             </div>
           </div>
+        </div>
+        
+        {/* Copyright at bottom, centered */}
+        <div className="text-center border-t border-muted/20 pt-6">
+          <p className="text-gray-400 text-sm">
+            &copy; {currentYear} Petr Kaločay. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
