@@ -34,7 +34,7 @@ const HeroSection = () => {
       duration: 0.8,
       ease: "power3.out",
     }, "-=0.6")
-    .from(buttonsRef.current?.children, {
+    .from(buttonsRef.current ? Array.from(buttonsRef.current.children) : [], {
       y: 20,
       opacity: 0,
       duration: 0.6,
@@ -60,7 +60,17 @@ const HeroSection = () => {
       className="min-h-screen relative flex items-center justify-center overflow-hidden"
     >
       <ThreeScene />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background -z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background/90 -z-10"></div>
+      
+      {/* Dynamic animated background shapes */}
+      <div className="absolute inset-0 overflow-hidden -z-20">
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-20 left-[10%] w-64 h-64 rounded-full bg-accent/10 filter blur-3xl animate-pulse"></div>
+          <div className="absolute top-[30%] right-[15%] w-72 h-72 rounded-full bg-blue-500/10 filter blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-[20%] left-[20%] w-80 h-80 rounded-full bg-indigo-500/10 filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-[50%] left-[50%] w-96 h-96 rounded-full bg-accent/5 filter blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+        </div>
+      </div>
       
       <div className="container mx-auto px-6 md:px-12 lg:px-16 py-24 relative z-10">
         <div className="max-w-4xl mx-auto">

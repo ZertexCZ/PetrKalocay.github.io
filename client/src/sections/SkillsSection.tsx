@@ -8,8 +8,32 @@ const SkillsSection = () => {
     <section 
       id="skills" 
       ref={sectionRef} 
-      className="min-h-screen relative py-24 px-6 md:px-12 lg:px-16 bg-card"
+      className="min-h-screen relative py-24 px-6 md:px-12 lg:px-16 bg-card overflow-hidden"
     >
+      {/* Moving particles background effect */}
+      <div className="particles-container absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        {Array.from({ length: 20 }).map((_, index) => (
+          <div 
+            key={index}
+            className="absolute bg-accent/10 rounded-full"
+            style={{
+              width: `${Math.random() * 30 + 10}px`,
+              height: `${Math.random() * 30 + 10}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.5 + 0.1,
+              animationDuration: `${Math.random() * 50 + 15}s`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          ></div>
+        ))}
+      </div>
+      
+      {/* Animated background shapes */}
+      <div className="absolute -z-10 w-full h-full">
+        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gradient-to-br from-accent/10 to-transparent blur-2xl animate-float-slow"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gradient-to-br from-accent/10 to-transparent blur-2xl animate-float-horizontal-slow"></div>
+      </div>
       <div className="container mx-auto">
         <div className="max-w-5xl mx-auto">
           <div className="section-heading">

@@ -73,6 +73,13 @@
   }
 }
 
+/* Particle animations for skills section */
+.particles-container > div {
+  animation: particles-slow;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
 /* Custom colors - synced with theme.json */
 :root {
   --background: 0 0% 7%;

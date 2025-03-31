@@ -7,8 +7,20 @@ const AboutSection = () => {
     <section 
       id="about" 
       ref={sectionRef}
-      className="min-h-screen relative py-24 px-6 md:px-12 lg:px-16"
+      className="min-h-screen relative py-24 px-6 md:px-12 lg:px-16 overflow-hidden"
     >
+      {/* Dynamic grid background */}
+      <div className="absolute inset-0 -z-10 opacity-20">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, var(--accent) 1px, transparent 0)`,
+          backgroundSize: '40px 40px',
+          backgroundPosition: 'center'
+        }}></div>
+      </div>
+      
+      {/* Moving accent color elements */}
+      <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full bg-accent/10 filter blur-xl animate-float-slow"></div>
+      <div className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full bg-accent/10 filter blur-xl animate-float-slow"></div>
       <div className="container mx-auto">
         <div className="max-w-5xl mx-auto">
           <div className="section-heading">
