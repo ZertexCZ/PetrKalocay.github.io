@@ -15,8 +15,6 @@ const Footer = () => {
         }}></div>
       </div>
 
-      {/* Center glowing line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/40 via-accent/5 to-transparent"></div>
       
       {/* Horizontal glowing line */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent"></div>
