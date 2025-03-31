@@ -10,7 +10,7 @@ const ProjectsSection = () => {
       ref={sectionRef}
       className="min-h-screen relative py-24 px-6 md:px-12 lg:px-16 bg-card overflow-hidden"
     >
-      {/* Animated 3D grid effect */}
+      {/* Animated 3D grid effect - improved */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/80 to-background/0 z-10"></div>
         <div className="grid-animation absolute inset-0 opacity-10" style={{
@@ -19,8 +19,36 @@ const ProjectsSection = () => {
           transformStyle: 'preserve-3d',
           transform: 'perspective(1000px) rotateX(80deg)',
           backgroundPosition: 'center',
-          transformOrigin: 'center center'
+          transformOrigin: 'center center',
+          animation: 'grid-move 20s linear infinite'
         }}></div>
+      </div>
+      
+      {/* Hexagonal pattern */}
+      <div className="absolute inset-0 -z-10 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill='%2338bdf8' fill-opacity='0.5'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/svg%3E")`,
+        }}></div>
+      </div>
+      
+      {/* Floating 3D objects */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div 
+            key={i}
+            className="absolute opacity-20"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 80 + 40}px`,
+              height: `${Math.random() * 80 + 40}px`,
+              background: `rgba(56, 189, 248, ${Math.random() * 0.2 + 0.1})`,
+              transform: `rotateX(${Math.random() * 360}deg) rotateY(${Math.random() * 360}deg)`,
+              boxShadow: '0 0 20px rgba(56, 189, 248, 0.3)',
+              animation: `float-3d ${Math.random() * 10 + 15}s ease-in-out infinite ${Math.random() * 5}s`
+            }}
+          />
+        ))}
       </div>
       
       {/* Dynamic circular animation */}
@@ -34,9 +62,9 @@ const ProjectsSection = () => {
       
       {/* Background gradient blobs */}
       <div className="absolute top-0 left-0 right-0 bottom-0 -z-10">
-        <div className="absolute -top-64 -right-64 w-96 h-96 rounded-full bg-accent/15 filter blur-3xl animate-float-slow"></div>
-        <div className="absolute top-1/2 -left-96 w-[500px] h-[500px] rounded-full bg-primary/15 filter blur-3xl animate-float-horizontal-slow"></div>
-        <div className="absolute -bottom-64 right-1/4 w-96 h-96 rounded-full bg-accent/10 filter blur-3xl animate-float-slow" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -top-64 -right-64 w-96 h-96 rounded-full bg-accent/20 filter blur-3xl animate-float-slow"></div>
+        <div className="absolute top-1/2 -left-96 w-[500px] h-[500px] rounded-full bg-primary/20 filter blur-3xl animate-float-horizontal-slow"></div>
+        <div className="absolute -bottom-64 right-1/4 w-96 h-96 rounded-full bg-accent/15 filter blur-3xl animate-float-slow" style={{ animationDelay: '2s' }}></div>
       </div>
       <div className="container mx-auto">
         <div className="max-w-5xl mx-auto">

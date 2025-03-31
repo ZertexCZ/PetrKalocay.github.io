@@ -80,6 +80,49 @@
   animation-iteration-count: infinite;
 }
 
+/* Binary code animation for skills section */
+@keyframes binary-fall {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Circuit board animation for skills section */
+@keyframes circuit-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Grid movement animation for projects section */
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+/* 3D floating animation for projects section */
+@keyframes float-3d {
+  0% {
+    transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+  }
+  50% {
+    transform: translateY(-20px) translateZ(20px) rotateX(10deg) rotateY(10deg);
+  }
+  100% {
+    transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+  }
+}
+
 /* Custom colors - synced with theme.json */
 :root {
   --background: 0 0% 7%;
