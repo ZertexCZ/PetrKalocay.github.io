@@ -8,7 +8,13 @@ const SkillsSection = () => {
     <section 
       id="skills" 
       ref={sectionRef} 
-      className="min-h-screen relative py-24 px-6 md:px-12 lg:px-16 bg-card overflow-hidden"
+      className="min-h-screen relative py-24 px-6 md:px-12 lg:px-16 overflow-hidden"
+      style={{
+        background: "linear-gradient(145deg, #12121e 0%, #191927 50%, #12121e 100%, #12121e 100%)",
+        backgroundSize: "200% 200%",
+        animation: "bg-pulse 20s ease infinite",
+        boxShadow: "inset 0 0 80px rgba(0, 0, 0, 0.25)"
+      }}
     >
       {/* Digital circuit board background pattern */}
       <div className="absolute inset-0 -z-10 opacity-5">

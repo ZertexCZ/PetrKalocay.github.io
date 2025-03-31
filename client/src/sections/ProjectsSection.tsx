@@ -8,7 +8,13 @@ const ProjectsSection = () => {
     <section 
       id="projects" 
       ref={sectionRef}
-      className="min-h-screen relative py-24 px-6 md:px-12 lg:px-16 bg-card overflow-hidden"
+      className="min-h-screen relative py-24 px-6 md:px-12 lg:px-16 overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg, #121218 0%, #1a1a24 50%, #121218 100%, #121218 100%)",
+        backgroundSize: "200% 200%",
+        animation: "bg-pulse 15s ease infinite",
+        boxShadow: "inset 0 0 100px rgba(0, 0, 0, 0.2)"
+      }}
     >
       {/* Animated 3D grid effect - improved */}
       <div className="absolute inset-0 -z-10">
