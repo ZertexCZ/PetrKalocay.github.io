@@ -98,7 +98,28 @@ const SkillsSection = () => {
             <h3 className="text-xl md:text-2xl font-clash font-semibold mb-6">Technical Certifications</h3>
             <div className="flex flex-wrap gap-3">
               {certifications.map((cert, index) => (
-                <div key={index} className="px-4 py-2 bg-background rounded-full border border-muted text-sm">
+                <div 
+                  key={index} 
+                  className="px-4 py-2 rounded-full text-sm certificate-tag"
+                  style={{
+                    background: `linear-gradient(120deg, rgba(25, 25, 35, 0.8), rgba(15, 15, 25, 0.9))`,
+                    border: '1px solid rgba(56, 189, 248, 0.2)',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(120deg, rgba(30, 30, 40, 0.9), rgba(20, 20, 30, 1))';
+                    e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.4)';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 6px 15px rgba(56, 189, 248, 0.15)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(120deg, rgba(25, 25, 35, 0.8), rgba(15, 15, 25, 0.9))';
+                    e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.2)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                  }}
+                >
                   {cert}
                 </div>
               ))}

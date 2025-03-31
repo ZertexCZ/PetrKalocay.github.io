@@ -65,11 +65,77 @@
   }
 
   .skill-card {
-    @apply p-6 rounded-lg border border-muted bg-background/50 hover:border-accent transition-all duration-300;
+    @apply p-6 rounded-lg border border-muted transition-all duration-300 relative overflow-hidden;
+    background: linear-gradient(120deg, rgba(25, 25, 35, 0.9), rgba(15, 15, 25, 0.9));
+    background-size: 200% 200%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .skill-card:hover {
+    @apply border-accent;
+    background-position: 100% 100%;
+    box-shadow: 0 8px 32px rgba(56, 189, 248, 0.15);
+    transform: translateY(-3px);
+  }
+  
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.5), transparent);
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .skill-card:hover::before {
+    transform: scaleX(1);
   }
 
   .project-card {
-    @apply mb-24;
+    @apply mb-24 relative;
+  }
+
+  /* Add a gradient background effect to project cards */
+  .project-card > div {
+    @apply rounded-lg p-6 overflow-hidden relative;
+    background: linear-gradient(135deg, rgba(25, 25, 35, 0.7), rgba(15, 15, 25, 0.7));
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    transition: all 0.4s ease;
+  }
+  
+  .project-card > div:hover {
+    box-shadow: 0 15px 40px rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.3);
+    transform: translateY(-5px);
+  }
+  
+  /* Gradient overlay at the edge of project cards */
+  .project-card > div::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(120deg, 
+      rgba(56, 189, 248, 0.1) 0%, 
+      rgba(56, 189, 248, 0) 20%, 
+      rgba(56, 189, 248, 0) 80%, 
+      rgba(56, 189, 248, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .project-card > div:hover::after {
+    opacity: 1;
   }
 }
 

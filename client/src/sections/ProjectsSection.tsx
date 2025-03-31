@@ -84,7 +84,16 @@ const ProjectsSection = () => {
                     <p className="text-gray-300 mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.technologies.map((tech, techIndex) => (
-                        <span key={techIndex} className="px-3 py-1 bg-background rounded-full text-xs">
+                        <span 
+                          key={techIndex} 
+                          className="px-3 py-1 rounded-full text-xs"
+                          style={{
+                            background: `linear-gradient(120deg, rgba(25, 25, 35, 0.8), rgba(15, 15, 25, 0.9))`,
+                            border: '1px solid rgba(56, 189, 248, 0.2)',
+                            boxShadow: '0 3px 6px rgba(0, 0, 0, 0.1)',
+                            transition: 'all 0.3s ease'
+                          }}
+                        >
                           {tech}
                         </span>
                       ))}
