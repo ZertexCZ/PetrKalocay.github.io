@@ -89,7 +89,7 @@ export const translations = {
     
     // Services Section
     servicesTitle: "Moje Služby",
-    servicesDescription: "Nabízím různé služby v oblasti IT a vývoje softwaru.",
+    servicesDescription: "Specializuji se na programování, vývoj webových stránek, ladění a integraci umělé inteligence. PO DOHODĚ MOHU POSKYTNOUT JAKOUKOLI DIGITÁLNÍ SLUŽBU PODLE VAŠICH POTŘEB.",
     webDevelopment: "Vývoj Webových Stránek",
     webDevelopmentDesc: "Tvorba moderních, responzivních webových stránek a aplikací.",
     webDevelopmentTech: "HTML, CSS, JavaScript, ...",
