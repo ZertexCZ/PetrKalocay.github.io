@@ -18,23 +18,34 @@ const HeroSection = () => {
     // Vstupní animace
     const tl = gsap.timeline();
     
+    // Reset any inline styles that might be causing issues
+    if (buttonsRef.current) {
+      Array.from(buttonsRef.current.children).forEach(button => {
+        (button as HTMLElement).style.opacity = '';
+        (button as HTMLElement).style.transform = '';
+      });
+    }
+    
     tl.from(headingRef.current, {
       y: 50,
       opacity: 0,
       duration: 0.8,
       ease: "power3.out",
+      clearProps: "all"
     })
     .from(subHeadingRef.current, {
       y: 30,
       opacity: 0,
       duration: 0.8,
       ease: "power3.out",
+      clearProps: "all"
     }, "-=0.4")
     .from(descriptionRef.current, {
       y: 30,
       opacity: 0,
       duration: 0.8,
       ease: "power3.out",
+      clearProps: "all"
     }, "-=0.6")
     .from(buttonsRef.current ? Array.from(buttonsRef.current.children) : [], {
       y: 20,
@@ -42,6 +53,7 @@ const HeroSection = () => {
       duration: 0.6,
       stagger: 0.1,
       ease: "power3.out",
+      clearProps: "all"
     }, "-=0.6");
     
     return () => {

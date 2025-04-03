@@ -10,11 +10,19 @@ import { Button } from '@/components/ui/button';
 import { translations } from '@/data/translations';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+// Dynamické validační schéma podle jazyka
+const getContactFormSchema = (language: string) => z.object({
+  name: z.string().min(2, (translations as any)[language].nameError),
+  email: z.string().email((translations as any)[language].emailError),
+  subject: z.string().min(3, (translations as any)[language].subjectError),
+  message: z.string().min(10, (translations as any)[language].messageError2)
+});
+
 const contactFormSchema = z.object({
-  name: z.string().min(2, "Jméno musí obsahovat alespoň 2 znaky"),
-  email: z.string().email("Zadejte prosím platnou e-mailovou adresu"),
-  subject: z.string().min(3, "Předmět musí obsahovat alespoň 3 znaky"),
-  message: z.string().min(10, "Zpráva musí obsahovat alespoň 10 znaků")
+  name: z.string().min(2),
+  email: z.string().email(),
+  subject: z.string().min(3),
+  message: z.string().min(10)
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
@@ -25,8 +33,9 @@ const ContactSection = () => {
   const { toast } = useToast();
   const { language } = useLanguage();
   
+  // Použití dynamického schématu podle aktuálního jazyka
   const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(getContactFormSchema(language)),
     defaultValues: {
       name: "",
       email: "",
@@ -104,8 +113,8 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h3 className="font-medium mb-1">{(translations as any)[language].emailContact}</h3>
-                    <a href="mailto:petrkalocay@gmail.com" className="text-gray-300 hover:text-accent transition-colors">{(translations as any)[language].emailValue1}</a><br />
-                    <a href="mailto:petrkalocay@outlook.cz" className="text-gray-300 hover:text-accent transition-colors">{(translations as any)[language].emailValue2}</a>
+                    <a href="mailto:petrkalocay@gmail.com" className="text-gray-300 hover:text-accent transition-colors">petrkalocay@gmail.com</a><br />
+                    <a href="mailto:petrkalocay@outlook.cz" className="text-gray-300 hover:text-accent transition-colors">petrkalocay@outlook.cz</a>
                   </div>
                 </div>
                 
@@ -124,8 +133,8 @@ const ContactSection = () => {
                     <i className="ri-map-pin-line"></i>
                   </div>
                   <div>
-                    <h3 className="font-medium mb-1">{(translations as any)[language].address}</h3>
-                    <p className="text-gray-300">{(translations as any)[language].addressValue}</p>
+                    <h3 className="font-medium mb-1">{(translations as any)[language].location || (translations as any)[language].address}</h3>
+                    <p className="text-gray-300">{language === 'cz' ? 'Česká republika' : (translations as any)[language].addressValue}</p>
                   </div>
                 </div>
               </div>

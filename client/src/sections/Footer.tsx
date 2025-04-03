@@ -109,7 +109,7 @@ const Footer = () => {
             className="inline-block"
           >
             <h2 className="text-3xl font-clash font-bold">
-              {(translations as any)[language].footerName.split(' ')[0]} <span className="text-accent">{(translations as any)[language].footerName.split(' ')[1]}<span className="text-accent/80">.</span></span>
+              {(translations as any)[language].footerName.split(' ')[0]} <span className="text-accent">{(translations as any)[language].footerName.split(' ')[1]}</span>
             </h2>
           </button>
           
