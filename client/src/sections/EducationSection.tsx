@@ -1,8 +1,31 @@
 import { useRef } from 'react';
-import { educationTimeline } from '@/data/education';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/data/translations';
 
 const EducationSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const { language } = useLanguage();
+
+  const educationData = [
+    {
+      period: (translations as any)[language].current,
+      title: (translations as any)[language].school,
+      subtitle: (translations as any)[language].field,
+      description: (translations as any)[language].currentDesc
+    },
+    {
+      period: (translations as any)[language].year2024,
+      title: (translations as any)[language].soc,
+      subtitle: (translations as any)[language].socAchievement,
+      description: (translations as any)[language].socDesc
+    },
+    {
+      period: (translations as any)[language].elementary,
+      title: (translations as any)[language].englishOlympiad,
+      subtitle: (translations as any)[language].secondPlace,
+      description: (translations as any)[language].olympiadDesc
+    }
+  ];
 
   return (
     <section 
@@ -14,13 +37,13 @@ const EducationSection = () => {
         <div className="max-w-5xl mx-auto">
           <div className="section-heading">
             <h2>
-              Education & <span className="text-accent">Achievements</span>
+              {(translations as any)[language].educationTitle.split(' & ')[0]} & <span className="text-accent">{(translations as any)[language].educationTitle.split(' & ')[1]}</span>
             </h2>
             <div></div>
           </div>
           
           <div className="space-y-12">
-            {educationTimeline.map((item, index) => (
+            {educationData.map((item, index) => (
               <div key={index} className="timeline-item">
                 <div className="col-span-2 mb-4 md:mb-0">
                   <div className="p-3 bg-background rounded-lg border border-muted inline-block">

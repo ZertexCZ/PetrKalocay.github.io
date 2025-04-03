@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useSections } from '@/hooks/use-sections';
-
-const sectionNames = {
-  'home': 'Home',
-  'about': 'About',
-  'skills': 'Skills',
-  'education': 'Education',
-  'projects': 'Projects',
-  'contact': 'Contact'
-};
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/data/translations';
 
 const PageIndicator = () => {
   const { activeSection, scrollToSection } = useSections();
   const [isVisible, setIsVisible] = useState(false);
+  const { language } = useLanguage();
+
+  const sectionNames = {
+    'home': translations[language].home,
+    'about': translations[language].about,
+    'skills': translations[language].skills,
+    'education': translations[language].education,
+    'projects': translations[language].projects,
+    'services': translations[language].services,
+    'contact': translations[language].contact
+  };
 
   useEffect(() => {
     // Show page indicator after a delay to ensure proper calculation

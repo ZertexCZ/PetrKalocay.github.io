@@ -1,13 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Switch, Route } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import Home from "@/pages/Home";
 import Cursor from "@/components/Cursor";
 import NotFound from "@/pages/not-found";
 import useIsMobile from "@/hooks/use-mobile";
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { LanguageProvider, useLanguage } from "@/contexts/LanguageContext";
 
-function App() {
+function AppContent() {
   const isMobile = useIsMobile();
+  const { language, setLanguage } = useLanguage();
+  const [showLanguageSelector, setShowLanguageSelector] = useState(() => {
+    // Pokud není v localStorage uložen jazyk, zobrazíme selektor
+    return !localStorage.getItem('language');
+  });
   
   useEffect(() => {
     // Prevent scroll-chaining on iOS
@@ -34,12 +41,28 @@ function App() {
   return (
     <>
       {!isMobile && <Cursor />}
+      {showLanguageSelector && (
+        <LanguageSelector 
+          onSelectLanguage={(selectedLanguage) => {
+            setLanguage(selectedLanguage);
+            setShowLanguageSelector(false);
+          }} 
+        />
+      )}
       <Switch>
         <Route path="/" component={Home} />
         <Route component={NotFound} />
       </Switch>
       <Toaster />
     </>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
 

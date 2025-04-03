@@ -1,38 +1,38 @@
 export const skills = [
   {
-    name: 'Web Development',
+    name: 'Vývoj webových aplikací',
     icon: 'ri-code-s-slash-line',
-    description: 'HTML, CSS, JavaScript fundamentals for creating responsive web applications.'
+    description: 'Základy HTML, CSS a JavaScriptu pro tvorbu responzivních webových aplikací.'
   },
   {
-    name: 'Programming',
+    name: 'Programování',
     icon: 'ri-terminal-box-line',
-    description: 'Experience with C#, Python, and other programming languages for software development.'
+    description: 'Zkušenosti s C#, Pythonem a dalšími programovacími jazyky pro vývoj softwaru.'
   },
   {
-    name: 'Computer Hardware',
+    name: 'Počítačový hardware',
     icon: 'ri-computer-line',
-    description: 'Knowledge of computer components, system architecture, and hardware troubleshooting.'
+    description: 'Znalost počítačových komponentů, systémové architektury a řešení hardwarových problémů.'
   },
   {
-    name: 'AI Development',
+    name: 'Vývoj umělé inteligence',
     icon: 'ri-robot-line',
-    description: 'Foundations in artificial intelligence concepts and application development.'
+    description: 'Základy konceptů umělé inteligence a vývoje aplikací s AI.'
   },
   {
-    name: 'Leadership',
+    name: 'Vedení',
     icon: 'ri-team-line',
-    description: 'Organizational and team leadership abilities developed through academic projects.'
+    description: 'Organizační schopnosti a schopnosti vést tým získané během akademických projektů.'
   },
   {
-    name: 'Problem Solving',
+    name: 'Řešení problémů',
     icon: 'ri-lightbulb-line',
-    description: 'Analytical thinking and efficient approach to technical challenges.'
+    description: 'Analytické myšlení a efektivní přístup k technickým výzvám.'
   }
 ];
 
 export const certifications = [
   'ECDL M2', 'ECDL M3', 'ECDL M4', 'ECDL M5', 
   'ECDL M6', 'ECDL M7', 'ECDL M9', 'ECDL M12', 'ECDL M15',
-  'More in future'
+  'Další v budoucnu'
 ];

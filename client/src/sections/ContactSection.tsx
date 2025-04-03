@@ -7,12 +7,14 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { translations } from '@/data/translations';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const contactFormSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  subject: z.string().min(3, "Subject must be at least 3 characters"),
-  message: z.string().min(10, "Message must be at least 10 characters")
+  name: z.string().min(2, "Jméno musí obsahovat alespoň 2 znaky"),
+  email: z.string().email("Zadejte prosím platnou e-mailovou adresu"),
+  subject: z.string().min(3, "Předmět musí obsahovat alespoň 3 znaky"),
+  message: z.string().min(10, "Zpráva musí obsahovat alespoň 10 znaků")
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
@@ -21,6 +23,7 @@ const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { language } = useLanguage();
   
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -36,20 +39,36 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // In a real application, this would send the data to a server
-      // For this portfolio demo, we'll just simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '3e140611-010d-44b3-a77c-cd87d12e0398',
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+        }),
       });
-      
-      form.reset();
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: (translations as any)[language].messageSent,
+          description: (translations as any)[language].messageSent,
+        });
+        
+        form.reset();
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (error) {
       toast({
-        title: "Error sending message",
-        description: "Please try again later or contact me directly via email.",
+        title: (translations as any)[language].messageError,
+        description: (translations as any)[language].messageError,
         variant: "destructive"
       });
     } finally {
@@ -67,7 +86,7 @@ const ContactSection = () => {
         <div className="max-w-5xl mx-auto">
           <div className="section-heading">
             <h2>
-              Get In <span className="text-accent">Touch</span>
+              {(translations as any)[language].contactTitle.split(' ')[0]} {(translations as any)[language].contactTitle.split(' ')[1]} <span className="text-accent">{(translations as any)[language].contactTitle.split(' ')[2]}</span>
             </h2>
             <div></div>
           </div>
@@ -75,7 +94,7 @@ const ContactSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
               <p className="text-lg text-gray-300 mb-8">
-                I'm currently open to new opportunities and collaborations. If you have a project idea, job opportunity, or just want to say hello, feel free to contact me through any of the channels below.
+                {(translations as any)[language].contactDescription}
               </p>
               
               <div className="space-y-6">
@@ -84,9 +103,9 @@ const ContactSection = () => {
                     <i className="ri-mail-line"></i>
                   </div>
                   <div>
-                    <h3 className="font-medium mb-1">Email</h3>
-                    <a href="mailto:petrkalocay@gmail.com" className="text-gray-300 hover:text-accent transition-colors">petrkalocay@gmail.com</a><br />
-                    <a href="mailto:petrkalocay@outlook.cz" className="text-gray-300 hover:text-accent transition-colors">petrkalocay@outlook.cz</a>
+                    <h3 className="font-medium mb-1">{(translations as any)[language].emailContact}</h3>
+                    <a href="mailto:petrkalocay@gmail.com" className="text-gray-300 hover:text-accent transition-colors">{(translations as any)[language].emailValue1}</a><br />
+                    <a href="mailto:petrkalocay@outlook.cz" className="text-gray-300 hover:text-accent transition-colors">{(translations as any)[language].emailValue2}</a>
                   </div>
                 </div>
                 
@@ -95,8 +114,8 @@ const ContactSection = () => {
                     <i className="ri-instagram-line"></i>
                   </div>
                   <div>
-                    <h3 className="font-medium mb-1">Instagram</h3>
-                    <a href="https://instagram.com/p.kalocay" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors">@p.kalocay</a>
+                    <h3 className="font-medium mb-1">{(translations as any)[language].instagram}</h3>
+                    <a href="https://instagram.com/p.kalocay" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors">{(translations as any)[language].instagramValue}</a>
                   </div>
                 </div>
                 
@@ -105,8 +124,8 @@ const ContactSection = () => {
                     <i className="ri-map-pin-line"></i>
                   </div>
                   <div>
-                    <h3 className="font-medium mb-1">Location</h3>
-                    <p className="text-gray-300">Czech Republic</p>
+                    <h3 className="font-medium mb-1">{(translations as any)[language].address}</h3>
+                    <p className="text-gray-300">{(translations as any)[language].addressValue}</p>
                   </div>
                 </div>
               </div>
@@ -120,10 +139,10 @@ const ContactSection = () => {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Your Name</FormLabel>
+                        <FormLabel>{(translations as any)[language].nameLabel}</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="John Doe"
+                            placeholder={(translations as any)[language].namePlaceholder}
                             {...field}
                             className="w-full p-3 bg-background border border-muted rounded-lg focus:outline-none focus:border-accent transition-colors"
                           />
@@ -138,11 +157,11 @@ const ContactSection = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Your Email</FormLabel>
+                        <FormLabel>{(translations as any)[language].emailLabel}</FormLabel>
                         <FormControl>
                           <Input
                             type="email"
-                            placeholder="john@example.com"
+                            placeholder={(translations as any)[language].emailPlaceholder}
                             {...field}
                             className="w-full p-3 bg-background border border-muted rounded-lg focus:outline-none focus:border-accent transition-colors"
                           />
@@ -157,10 +176,10 @@ const ContactSection = () => {
                     name="subject"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Subject</FormLabel>
+                        <FormLabel>{(translations as any)[language].subjectLabel}</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="Project Inquiry"
+                            placeholder={(translations as any)[language].subjectPlaceholder}
                             {...field}
                             className="w-full p-3 bg-background border border-muted rounded-lg focus:outline-none focus:border-accent transition-colors"
                           />
@@ -175,10 +194,10 @@ const ContactSection = () => {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel>{(translations as any)[language].messageLabel}</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Your message here..."
+                            placeholder={(translations as any)[language].messagePlaceholder}
                             rows={5}
                             {...field}
                             className="w-full p-3 bg-background border border-muted rounded-lg focus:outline-none focus:border-accent transition-colors resize-none"
@@ -194,7 +213,7 @@ const ContactSection = () => {
                     disabled={isSubmitting}
                     className="w-full py-3 px-6 bg-accent hover:bg-accent/90 text-black font-medium rounded-lg transition-all duration-300"
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? (translations as any)[language].sendButton : (translations as any)[language].sendButton}
                   </Button>
                 </form>
               </Form>

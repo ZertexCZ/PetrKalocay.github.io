@@ -1,20 +1,20 @@
 export const educationTimeline = [
   {
-    period: 'Present',
-    title: 'Secondary Industrial School, Ostrov nad Ohří',
-    subtitle: 'Information Technology',
-    description: 'Currently studying Information Technology with focus on software development and hardware knowledge. Developing skills in programming languages and computer systems architecture.'
+    period: 'Současnost',
+    title: 'Střední průmyslová škola, Ostrov nad Ohří',
+    subtitle: 'Informační technologie',
+    description: 'V současné době studuji informační technologie se zaměřením na vývoj softwaru a znalosti hardwaru. Rozvíjím dovednosti v programovacích jazycích a architektuře počítačových systémů.'
   },
   {
     period: '2024/2025',
-    title: 'Secondary School Professional Activity (SOČ)',
-    subtitle: 'Regional Round Success in Informatics',
-    description: 'Successfully competed in the regional round with the project "Chatbot for Schools" and "FYAI Mobile App", which are now actively used by my school for student information queries.'
+    title: 'Středoškolská odborná činnost (SOČ)',
+    subtitle: 'Úspěch v krajském kole v informatice',
+    description: 'Úspěšně jsem se zúčastnil krajského kola s projekty "Chatbot pro školy" a "FYAI Mobile App", které jsou nyní aktivně používány mou školou pro dotazy studentů.'
   },
   {
-    period: 'Elementary School',
-    title: 'English Language Olympiad',
-    subtitle: '2nd Place',
-    description: 'Secured 2nd place in an English Language Olympiad, demonstrating strong language skills at an early age.'
+    period: 'Základní škola',
+    title: 'Olympiáda v anglickém jazyce',
+    subtitle: '2. místo',
+    description: 'Získal jsem 2. místo v olympiádě v anglickém jazyce, což prokázalo silné jazykové dovednosti již v raném věku.'
   }
 ];

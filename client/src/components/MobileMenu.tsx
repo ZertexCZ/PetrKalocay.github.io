@@ -1,4 +1,7 @@
 import { useSections } from '@/hooks/use-sections';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/data/translations';
+import LanguageToggle from './LanguageToggle';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -7,10 +10,13 @@ interface MobileMenuProps {
 
 const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   const { scrollToSection } = useSections();
+  const { language } = useLanguage();
 
   const handleNavigation = (section: string) => {
-    scrollToSection(section);
-    onClose();
+    if (['about', 'skills', 'projects', 'services', 'contact'].includes(section)) {
+      scrollToSection(section as 'about' | 'services' | 'skills' | 'projects' | 'contact');
+      onClose();
+    }
   };
 
   return (
@@ -22,15 +28,19 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       `}
     >
       <div className="space-y-8 text-center">
-        {['about', 'skills', 'education', 'projects', 'contact'].map((section) => (
+        {['about', 'skills', 'projects', 'services', 'contact'].map((section) => (
           <button
             key={section}
             onClick={() => handleNavigation(section)}
             className="text-2xl block font-clash font-semibold hover:text-accent transition-colors duration-300"
           >
-            {section.charAt(0).toUpperCase() + section.slice(1)}
+            {(translations as Record<string, Record<string, string>>)[language][section]}
           </button>
         ))}
+      </div>
+
+      <div className="mt-12 mb-8">
+        <LanguageToggle className="justify-center" />
       </div>
       
       <div className="absolute bottom-12 flex space-x-6">

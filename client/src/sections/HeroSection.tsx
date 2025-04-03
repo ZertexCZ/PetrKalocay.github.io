@@ -2,9 +2,12 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useSections } from '@/hooks/use-sections';
 import ThreeScene from '@/components/ThreeScene';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/data/translations';
 
 const HeroSection = () => {
   const { scrollToSection } = useSections();
+  const { language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subHeadingRef = useRef<HTMLHeadingElement>(null);
@@ -12,7 +15,7 @@ const HeroSection = () => {
   const buttonsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Entrance animation
+    // Vstupní animace
     const tl = gsap.timeline();
     
     tl.from(headingRef.current, {
@@ -55,7 +58,7 @@ const HeroSection = () => {
       <ThreeScene />
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background/90 -z-10"></div>
       
-      {/* Dynamic animated background shapes */}
+      {/* Dynamicky animované tvary na pozadí */}
       <div className="absolute inset-0 overflow-hidden -z-20">
         <div className="absolute top-0 left-0 w-full h-full">
           <div className="absolute top-20 left-[10%] w-64 h-64 rounded-full bg-accent/10 filter blur-3xl animate-pulse"></div>
@@ -69,29 +72,28 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6 md:space-y-8">
             <h3 ref={subHeadingRef} className="text-lg md:text-xl font-medium text-accent">
-              Hello, I'm
+              {(translations as any)[language].heroGreeting}
             </h3>
             <h1 ref={headingRef} className="text-4xl md:text-6xl lg:text-7xl font-clash font-bold">
               <span className="block">Petr Kaločay</span>
-              <span className="block mt-3">IT Student & <span className="text-accent">Developer</span></span>
+              <span className="block mt-3">{(translations as any)[language].heroTitle} <span className="text-accent">{(translations as any)[language].heroDeveloper}</span></span>
             </h1>
             <p ref={descriptionRef} className="text-lg md:text-xl text-gray-300 max-w-2xl">
-              Information Technology student with a passion for software development
-              and artificial intelligence. Based in Czech Republic.
+              {(translations as any)[language].heroDescription}
             </p>
             <div ref={buttonsRef} className="pt-4 flex flex-wrap gap-4">
               <button
                 onClick={() => scrollToSection('projects')}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent/90 text-black font-medium rounded-full transition-all duration-300 group"
               >
-                View My Work
+                {(translations as any)[language].heroButtonProjects}
                 <i className="ri-arrow-right-line transform group-hover:translate-x-1 transition-transform duration-300"></i>
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
                 className="inline-flex items-center gap-2 px-6 py-3 border border-accent text-accent hover:bg-accent/10 font-medium rounded-full transition-all duration-300"
               >
-                Get In Touch
+                {(translations as any)[language].heroButtonContact}
               </button>
             </div>
           </div>

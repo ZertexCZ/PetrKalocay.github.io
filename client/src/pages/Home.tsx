@@ -8,6 +8,7 @@ import AboutSection from '@/sections/AboutSection';
 import SkillsSection from '@/sections/SkillsSection';
 import EducationSection from '@/sections/EducationSection';
 import ProjectsSection from '@/sections/ProjectsSection';
+import ServicesSection from '@/sections/ServicesSection';
 import ContactSection from '@/sections/ContactSection';
 import Footer from '@/sections/Footer';
 import { setupScrollAnimations } from '@/utils/animations';
@@ -35,6 +36,7 @@ const Home = () => {
         <SkillsSection />
         <EducationSection />
         <ProjectsSection />
+        <ServicesSection />
         <ContactSection />
         <Footer />
       </main>

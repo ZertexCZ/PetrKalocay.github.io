@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react';
 import { useSections } from '@/hooks/use-sections';
 import useIsMobile from '@/hooks/use-mobile';
 import MobileMenu from './MobileMenu';
+import LanguageToggle from './LanguageToggle';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/data/translations';
 
 const Navbar = () => {
   const { scrollToSection } = useSections();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const { language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,21 +50,26 @@ const Navbar = () => {
               P<span className="text-accent">.</span>K<span className="text-accent">.</span>
             </span>
             <span className="inline-block absolute top-0 left-0 transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
-              Petr<span className="text-accent">.</span>Kaločay
+              Petr<span className="text-accent">.</span><span className="text-accent">Kaločay</span>
             </span>
           </a>
           
           <div className="hidden md:flex space-x-8 items-center">
-            {['about', 'skills', 'projects', 'contact'].map((section) => (
+            {['about', 'skills', 'projects', 'services', 'contact'].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
                 className="text-sm uppercase tracking-wider font-medium hover:text-accent transition-colors duration-300"
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {(translations as Record<string, Record<string, string>>)[language][section]}
               </button>
             ))}
+            <div className="ml-2">
+              <LanguageToggle />
+            </div>
           </div>
+          
+
           
           <button 
             className="md:hidden flex flex-col space-y-1.5 group"

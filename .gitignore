@@ -1,6 +1,22 @@
-node_modules
-dist
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+
+# Environment variables (don't commit these to GitHub!)
+.env
+.env.local
+.env.production
+
+# Log files
+*.log
+npm-debug.log*
+
+# OS files
 .DS_Store
+Thumbs.db
+
 server/public
 vite.config.ts.*
 *.tar.gz
