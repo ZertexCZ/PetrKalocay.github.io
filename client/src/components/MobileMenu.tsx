@@ -22,11 +22,14 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   return (
     <div 
       className={`
-        fixed inset-0 bg-background z-50 flex flex-col justify-center items-center
-        transition-transform duration-500 md:hidden
-        ${isOpen ? 'translate-x-0' : 'translate-x-full'}
-      `}
+        fixed inset-0 bg-background z-50 flex flex-col justify-center items-center transition-transform duration-500 md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'} ml-4`}
     >
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-2xl font-bold"
+      >
+        X
+      </button>
       <div className="space-y-8 text-center">
         {['about', 'skills', 'projects', 'services', 'contact'].map((section) => (
           <button
