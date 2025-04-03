@@ -11,10 +11,12 @@ import { LanguageProvider, useLanguage } from "@/contexts/LanguageContext";
 function AppContent() {
   const isMobile = useIsMobile();
   const { language, setLanguage } = useLanguage();
-  const [showLanguageSelector, setShowLanguageSelector] = useState(() => {
-    // Pokud není v localStorage uložen jazyk, zobrazíme selektor
-    return !localStorage.getItem('language');
-  });
+  
+  // Comment out language selector state - we don't want to show it
+  // const [showLanguageSelector, setShowLanguageSelector] = useState(() => {
+  //   // Pokud není v localStorage uložen jazyk, zobrazíme selektor
+  //   return !localStorage.getItem('language');
+  // });
   
   useEffect(() => {
     // Prevent scroll-chaining on iOS
@@ -41,6 +43,7 @@ function AppContent() {
   return (
     <>
       {!isMobile && <Cursor />}
+      {/* Comment out language selector component rendering
       {showLanguageSelector && (
         <LanguageSelector 
           onSelectLanguage={(selectedLanguage) => {
@@ -48,7 +51,7 @@ function AppContent() {
             setShowLanguageSelector(false);
           }} 
         />
-      )}
+      )} */}
       <Switch>
         <Route path="/" component={Home} />
         <Route component={NotFound} />
